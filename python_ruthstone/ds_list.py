@@ -4,11 +4,11 @@ class Node:
         self.data=data
         self.next=None
     
-    def set_next(self,new_next):
-        self.next=new_next
+    def set_data(self,data):
+        self.data=data
 
-    def set_data(self,new_data):
-        self.data=new_data
+    def set_next(self,next):
+        self.next=next
 
     def get_data(self):
         return self.data
@@ -16,40 +16,69 @@ class Node:
     def get_next(self):
         return self.next
 
-class LinkList:
+class ListUnOrdered:
+    
     def __init__(self):
         self.head=None
-
+    
     def add_data(self,data):
-        n=Node(data)
-        n.set_next(self.head)
-        self.head=n
+        node=Node(data)
+        node.set_next(self.head)
+        self.head=node
 
     def traverse(self):
-        current=self.head
-        while current.next!=None:
-            print(current.get_data())
-            current=current.get_next()
-        print(current.get_data())
-    
+        
+        if self.head==None:
+            return None
+        
+        cur_node=self.head
+
+        while cur_node!=None:
+            print(cur_node.data)
+            cur_node=cur_node.get_next()
+            
     def count(self):
-        current=self.head
-        count=0
-        while current.next!=None:
-            count=count+1
-            current=current.get_next()
-        print("count is",count)
+        cnt=0
+        if self.head==None:
+            return cnt
+        
+        cur_node=self.head
 
-ll=LinkList()
-ll.add_data(31)
-ll.add_data(77)
-ll.add_data(17)
-ll.add_data(93)
-ll.add_data(26)
-ll.add_data(54)
-ll.traverse()
-ll.count()
+        while cur_node!=None:
+            cnt=cnt+1
+            cur_node=cur_node.get_next()
+
+        return cnt
+        
+    def search(self,value):
+        is_found=False
+        if self.head==None:
+            return is_found
+        cur_node=self.head
+        while cur_node!=None and not is_found:
+            if cur_node.get_data()==value:
+                is_found=True
+            else:
+                cur_node=cur_node.get_next()
+
+        return is_found
 
 
 
-    
+
+
+
+list1=ListUnOrdered()
+print(list1.count())
+list1.traverse()
+print(list1.search(20))
+list1.add_data(10)
+list1.add_data(20)
+list1.add_data(30)
+list1.add_data(40)
+list1.add_data(50)
+list1.add_data(60)
+list1.add_data(70)
+list1.traverse()
+print(list1.count())
+print(list1.search(20))
