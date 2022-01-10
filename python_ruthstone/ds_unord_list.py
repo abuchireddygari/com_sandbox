@@ -34,7 +34,7 @@ class ListUnOrdered:
         cur_node=self.head
 
         while cur_node!=None:
-            print(cur_node.data)
+            print(cur_node.get_data())
             cur_node=cur_node.get_next()
             
     def count(self):
@@ -45,6 +45,7 @@ class ListUnOrdered:
         cur_node=self.head
 
         while cur_node!=None:
+            print(cur_node.get_data())
             cnt=cnt+1
             cur_node=cur_node.get_next()
 
@@ -63,15 +64,26 @@ class ListUnOrdered:
 
         return is_found
 
-
-
+    
+    def replace(self,value):
+        is_found=False
+        cur_node=self.head
+        pre_node=self.head
+        while cur_node!=None and not is_found:
+            #print(cur_node.get_data(),value)
+            if cur_node.get_data()==value:
+                if pre_node==self.head:
+                    self.head=cur_node.get_next()
+                else:
+                    pre_node.set_next(cur_node.get_next())
+                is_found=True
+            else:
+                pre_node=cur_node
+                cur_node=cur_node.get_next()
 
 
 
 list1=ListUnOrdered()
-print(list1.count())
-list1.traverse()
-print(list1.search(20))
 list1.add_data(10)
 list1.add_data(20)
 list1.add_data(30)
@@ -79,6 +91,15 @@ list1.add_data(40)
 list1.add_data(50)
 list1.add_data(60)
 list1.add_data(70)
+print("traverse")
 list1.traverse()
+print("count")
 print(list1.count())
+print("search")
 print(list1.search(20))
+print("replace")
+list1.replace(20)
+print("traverse")
+list1.traverse()
+print("count")
+print(list1.count())
