@@ -5,7 +5,7 @@ def is_anagram_chk(str1,str2):
     is_anagram=True
 
     if len(str1)!=len(str2):
-        return is_anagram
+        return not is_anagram
 
     list2=list(str2)
 
@@ -35,10 +35,10 @@ def is_anagram_chk(str1,str2):
 
 def is_anagram_srt(str1,str2):
 
-    if len(str1)!=len(str2):
-        return False
-
     is_anagram=True
+
+    if len(str1)!=len(str2):
+        return not is_anagram
     
     list1=list(str1)
     list2=list(str2)
@@ -57,8 +57,10 @@ def is_anagram_srt(str1,str2):
 
 def is_anagram_cnt(str1,str2):
     
+    is_anagram=True
+
     if len(str1)!=len(str2):
-        return False
+        return not is_anagram
     
     list1=[0]*26
     list2=[0]*26
@@ -72,7 +74,7 @@ def is_anagram_cnt(str1,str2):
         list2[pos]=list2[pos]+1
 
     i=0
-    is_anagram=True
+    
 
     while i<26 and is_anagram:
         if list1[i]==list2[i]:
