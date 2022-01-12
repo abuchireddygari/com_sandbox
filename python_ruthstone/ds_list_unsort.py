@@ -16,7 +16,7 @@ class Node:
     def get_next(self):
         return self.next
 
-class ListUnOrdered:
+class ListUnSorted:
     
     def __init__(self):
         self.head=None
@@ -83,7 +83,7 @@ class ListUnOrdered:
 
 
 
-list1=ListUnOrdered()
+list1=ListUnSorted()
 list1.add_data(10)
 list1.add_data(20)
 list1.add_data(30)
