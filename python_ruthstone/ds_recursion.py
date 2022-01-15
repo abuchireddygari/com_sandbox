@@ -21,6 +21,21 @@ def rec_str_rev(in_str):
         return in_str[0]
     return rec_str_rev(in_str[1:])+in_str[0]
 
+def rec_min_coins(coin_val_list,change):
+    
+    min_coins=change
+    if change in coin_val_list:
+        return 1
+    else:
+        for i in [c for c in coin_val_list if c<=change]:
+            num_coins=1+rec_min_coins(coin_val_list,change-i)
+            if num_coins<min_coins:
+                min_coins=num_coins
+    return min_coins
+   
+    
+
+
 
 list1=[1,3,5,7,9]
 print("for loop sum")
@@ -31,3 +46,5 @@ print("recursion number to base string")
 print(num_to_basestr(10,2))
 print("recursion reverse string")
 print(rec_str_rev("ashok"))
+print("recursion min coins")
+print(rec_min_coins([1,5,10,25],63))
